@@ -1,0 +1,22 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: tekton-clusterinterceptor-access
+rules:
+  - apiGroups: ["triggers.tekton.dev"]
+    resources: ["clusterinterceptors", "clustertriggerbindings", "eventlisteners", "interceptors", "triggerbindings", "triggertemplates"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: tekton-clusterinterceptor-access-binding
+subjects:
+  - kind: ServiceAccount
+    name: tekton-pipeline-sa
+    namespace: ocp-pipelines
+roleRef:
+  kind: ClusterRole
+  name: tekton-clusterinterceptor-access
+  apiGroup: rbac.authorization.k8s.io
