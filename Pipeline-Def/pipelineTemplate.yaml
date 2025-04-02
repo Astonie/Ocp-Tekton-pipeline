@@ -9,6 +9,7 @@ spec:
     - name: git-url
       default: "https://github.com/florient2016/Activities.git"
     - name: git-revision
+      default: "latest"
     - name: image-repo
       default: "docker.io/komlan2019/activities"
   workspaces:
