@@ -4,11 +4,14 @@ metadata:
   name: ocp-deployment-pipeline
   namespace: ocp-pipelines
 rules:
+  - apiGroups: [""]
+    resources: ["pods", "services", "secrets", "configmaps","serviceaccounts"]
+    verbs: ["create", "update", "patch", "delete", "get", "list", "watch"]
   - apiGroups: ["security.openshift.io"]
     resources: ["securitycontextconstraints"]
     verbs: ["create", "delete", "get", "list", "patch", "update", "watch", "escalate"]
   - apiGroups: ["tekton.dev"]
-    resources: ["pipelines", "tasks", "pipelineruns", "runs", "pipelineresources", "taskruns","triggerbindings","triggertemplates"]
+    resources: ["pipelines", "tasks", "pipelineruns", "runs", "pipelineresources", "taskruns","triggerbindings","triggertemplates","eventlisteners","clustertriggerbindings"]
     verbs: ["get", "list", "create", "update", "delete"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1

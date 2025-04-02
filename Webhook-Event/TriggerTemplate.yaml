@@ -11,20 +11,22 @@ spec:
     - apiVersion: tekton.dev/v1beta1
       kind: PipelineRun
       metadata:
-        generateName: nginx-build-run- # Creates unique run names (e.g., nginx-build-run-abcde)
+        generateName: activities-build-run-
       spec:
         serviceAccountName: tekton-pipeline-sa
         pipelineRef:
-          name: nginx-build-pipeline # References the pipeline defined earlier
+          name: activities-build-pipeline
         params:
           - name: git-url
             value: $(tt.params.gitrepositoryurl)
           - name: git-revision
             value: $(tt.params.gitrevision)
           - name: image-repo
-            value: "quay.io/your-org/nginx-app"
+            value: "docker.io/komlan2019/activities"
         workspaces:
           - name: shared-workspace
             persistentVolumeClaim:
               claimName: pipeline-pvc
----
+        podTemplate:
+          securityContext:
+            fsGroup: 65535
