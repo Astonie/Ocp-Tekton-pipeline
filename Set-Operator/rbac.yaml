@@ -5,7 +5,7 @@ metadata:
   namespace: ocp-pipelines
 rules:
   - apiGroups: [""]
-    resources: ["pods", "services", "secrets", "configmaps","serviceaccounts"]
+    resources: ["pods", "services", "secrets", "configmaps","serviceaccounts","persistentvolumeclaims","namespaces"]
     verbs: ["create", "update", "patch", "delete", "get", "list", "watch"]
   - apiGroups: ["security.openshift.io"]
     resources: ["securitycontextconstraints"]
