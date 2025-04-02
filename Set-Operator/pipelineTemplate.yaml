@@ -3,7 +3,7 @@ apiVersion: tekton.dev/v1beta1
 kind: Pipeline
 metadata:
   name: activities-build-pipeline
-  namespace: cicd
+  namespace: ocp-pipelines
 spec:
   params:
     - name: git-url
