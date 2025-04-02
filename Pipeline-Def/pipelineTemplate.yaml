@@ -32,7 +32,8 @@ spec:
       runAfter: [clone]
       params:
         - name: IMAGE
-          value: "$(params.image-repo):$(params.git-revision)"
+          #value: "$(params.image-repo):$(params.git-revision)"
+          value: "$(params.image-repo):latest"  # Forces tag to "latest"
         - name: DOCKERFILE
           value: "./Dockerfile"
       workspaces:
