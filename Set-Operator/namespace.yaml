@@ -33,5 +33,5 @@ roleRef:
   name: privileged-scc-role
 subjects:
 - kind: ServiceAccount
-  name: default
+  name: tekton-pipeline-sa
   namespace: ocp-pipelines
