@@ -8,6 +8,9 @@ rules:
   - apiGroups: ["triggers.tekton.dev"]
     resources: ["pipelines", "tasks", "pipelineruns", "runs", "pipelineresources", "taskruns","triggerbindings","triggertemplates", "eventlisteners"]
     verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+  - apiGroups: ["*.tekton.dev"]
+    resources: ["pipelines", "tasks", "pipelineruns", "runs", "pipelineresources", "taskruns","triggerbindings","triggertemplates", "eventlisteners"]
+    verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
@@ -16,7 +19,7 @@ metadata:
   namespace: ocp-pipelines
 subjects:
   - kind: ServiceAccount
-    name: openshift-gitops-argocd-application-controller
+    name: tekton-pipeline-sa
     namespace: openshift-gitops
 roleRef:
   kind: Role

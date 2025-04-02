@@ -25,6 +25,7 @@ metadata:
 subjects:
   - kind: ServiceAccount
     name: tekton-pipeline-sa
+    namespace: ocp-pipelines
 roleRef:
   kind: Role
   name: tekton-pipeline-role
