@@ -1,0 +1,23 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: EventListener
+metadata:
+  name: github-listener
+  namespace: ocp-pipelines
+spec:
+  serviceAccountName: tekton-pipeline-sa
+  triggers:
+    - name: push-trigger
+      interceptors:
+        - ref:
+            name: "github"
+          params:
+            - name: "secretRef"
+              value:
+                secretName: github-webhook-secret
+                secretKey: secretToken
+            - name: "eventTypes"
+              value: ["push"] # Only trigger on push events
+      bindings:
+        - ref: github-binding
+      template:
+        ref: github-trigger

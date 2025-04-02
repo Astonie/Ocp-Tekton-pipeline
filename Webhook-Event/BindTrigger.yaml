@@ -1,0 +1,11 @@
+apiVersion: triggers.tekton.dev/v1beta1
+kind: TriggerBinding
+metadata:
+  name: github-binding
+  namespace: ocp-pipelines
+spec:
+  params:
+    - name: gitrevision
+      value: $(body.head_commit.id) # Commit SHA from the push event
+    - name: gitrepositoryurl
+      value: $(body.repository.clone_url) # HTTPS clone URL of the repo
