@@ -7,11 +7,11 @@ metadata:
 spec:
   params:
     - name: git-url
-      default: "https://github.com/florient2016/Activities.git"
+      default: "https://github.com/Astonie/Ocp-Tekton-pipeline.git"
     - name: git-revision
       default: "latest"
     - name: image-repo
-      default: "docker.io/komlan2019/activities"
+      default: "docker.io/mukiwa/activities"
   workspaces:
     - name: shared-workspace
   tasks:
